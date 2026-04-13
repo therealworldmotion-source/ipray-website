@@ -2071,10 +2071,10 @@
           </a>
         </div>
       </div>
-      <form class="contact__form fade-up" onsubmit="return false;">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Email Address" required>
-        <textarea placeholder="Your message, prayer request, or enquiry..." rows="5"></textarea>
+      <form class="contact__form fade-up" action="https://formspree.io/f/info@ipray.uk" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <textarea name="message" placeholder="Your message, prayer request, or enquiry..." rows="5"></textarea>
         <button type="submit" class="btn btn--primary" style="width:100%;">Send Message</button>
       </form>
     </div>
