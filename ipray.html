@@ -1,0 +1,2547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPray — Taking the Gospel to the Streets</title>
+  <meta name="description" content="iPray is an evangelistic initiative stirring, training, and mobilising believers to be a visible, vocal, and loving witness in the streets — where Jesus is needed most.">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="iPray — Taking the Gospel to the Streets">
+  <meta property="og:description" content="Revival begins when believers take the Gospel beyond the walls of the church.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ipray.uk">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iPray — Taking the Gospel to the Streets">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =============================================
+       iPRAY — CINEMATIC BUILD
+       Dark / Warm Orange (Dove) / Bold & Energetic
+       ============================================= */
+
+    :root {
+      --bg: #ffffff;
+      --bg-elevated: #f5f5f3;
+      --text: #1a1a1f;
+      --muted: #6b6b73;
+      --accent: #F0842A;
+      --accent-hover: #e0741a;
+      --accent-soft: rgba(240, 132, 42, 0.08);
+      --cream: #1a1a1f;
+      --border: #e5e5e0;
+      --font-display: 'Sora', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ---- UTILITY ---- */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-soft);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 36px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+    }
+
+    .btn--primary {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+    }
+    .btn--primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(240, 132, 42, 0.3);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: inherit;
+      border: 1px solid rgba(128,128,128,0.3);
+    }
+    .btn--outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    /* ---- TOP BAR ---- */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 101;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 24px;
+      background: #1a1a1f;
+      font-size: 0.7rem;
+      color: #ccc;
+    }
+    .topbar__left, .topbar__right {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .topbar__item {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .topbar__item:hover { color: var(--accent); }
+    .topbar__donate {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.5);
+      padding: 4px 16px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: all 0.3s;
+    }
+    .topbar__donate:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .topbar { display: none; }
+    }
+
+    /* ---- NAV ---- */
+    .nav {
+      position: fixed;
+      top: 32px;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .nav__links, .nav__cta, .nav__hamburger {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .nav--visible .nav__links,
+    .nav--visible .nav__cta,
+    .nav--visible .nav__hamburger {
+      opacity: 1;
+    }
+
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav__logo-img {
+      height: 40px;
+      width: auto;
+    }
+    .nav__logo-text {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a1a1f;
+      letter-spacing: -0.02em;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav__links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #555;
+      transition: color 0.3s;
+      letter-spacing: 0.02em;
+    }
+    .nav__links a:hover { color: var(--accent); }
+
+    .nav__cta {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent);
+      padding: 10px 24px;
+      border-radius: 10px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav__cta:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(240, 132, 42, 0.25);
+    }
+
+    /* Mobile nav */
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav__hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #1a1a1f;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .nav { top: 0; }
+      .nav__links, .nav__cta { display: none; }
+      .nav__hamburger { display: flex; }
+      .nav__links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(20px);
+        padding: 24px;
+        gap: 1.25rem;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+      }
+      .nav__links.open a { color: #333; }
+      .nav__cta.open {
+        display: inline-flex;
+        position: absolute;
+        top: calc(100% + 180px);
+        left: 24px;
+      }
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 20px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .hero__bg {
+      display: none;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero__badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      opacity: 0;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 10vw, 6.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    .hero__title-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .hero__title-accent {
+      color: var(--accent);
+    }
+
+    .hero__sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      max-width: 50ch;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      opacity: 0;
+    }
+
+    .hero__ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      z-index: 2;
+    }
+    .hero__scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+    .hero__scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ---- CURTAIN REVEAL ---- */
+    .curtain-section {
+      position: relative;
+      height: 200vh;
+      background: #ffffff;
+    }
+    .curtain-sticky {
+      position: sticky;
+      top: 0;
+      height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+    }
+    .curtain-frame {
+      position: relative;
+      height: min(82vh, 760px);
+      aspect-ratio: 9 / 16;
+      max-width: 90vw;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: none;
+      isolation: isolate;
+      flex-shrink: 0;
+    }
+    /* Full-screen curtain panels that cover the entire viewport */
+    .curtain-left, .curtain-right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      background: #ffffff;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+    }
+    .curtain-left {
+      left: 0;
+      justify-content: flex-end;
+      padding-right: 30px;
+    }
+    .curtain-right {
+      right: 0;
+      justify-content: flex-start;
+      padding-left: 30px;
+    }
+    .curtain-left h2, .curtain-right h2 {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 12vw, 10rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      color: #1a1a1f;
+    }
+    .curtain-content {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .curtain-content__video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+    .curtain-reveal-text {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 3;
+      opacity: 0;
+      width: 90%;
+      max-width: 360px;
+      pointer-events: none;
+      padding: 0 12px;
+    }
+    .curtain-reveal-text p {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-style: italic;
+      color: rgba(255,255,255,0.95);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    }
+    .curtain-reveal-text span {
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    /* ---- VIDEO CONTROLS (curtain) ---- */
+    .video-controls {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
+      padding: 14px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .curtain-frame:hover .video-controls,
+    .video-controls.is-paused {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .video-progress {
+      position: relative;
+      height: 4px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 100px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .video-progress__fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      background: var(--accent);
+      border-radius: 100px;
+      transition: width 0.1s linear;
+    }
+    .video-controls__row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .video-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 4px;
+      font-size: 16px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+    }
+    .video-btn:hover { color: var(--accent); }
+    .video-time {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.85);
+      margin-left: auto;
+    }
+    .video-center-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(240, 132, 42, 0.95);
+      border: none;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      box-shadow: 0 8px 30px rgba(240, 132, 42, 0.5);
+      transition: transform 0.2s;
+    }
+    .video-center-play:hover { transform: translate(-50%, -50%) scale(1.08); }
+    .video-center-play.is-visible { display: flex; }
+    .video-center-play svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+
+    /* ---- HERO DOVE LANDSCAPE FRAME ---- */
+    .hero__dove-frame {
+      width: 100%;
+      max-width: 720px;
+      aspect-ratio: 16 / 9;
+      margin: 2.5rem auto 0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      background: #f5f5f3;
+    }
+    .hero__dove-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ---- WHERE SECTION ---- */
+    .where {
+      padding: 20px 24px 80px;
+      text-align: center;
+      background: var(--bg-elevated);
+    }
+    .where__inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .where__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .where__text {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 55ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ---- SCRIPTURE BANNER ---- */
+    .scripture-banner {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .scripture-banner__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .scripture-banner__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.85) 100%);
+    }
+    .scripture-banner__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 80px 24px;
+      max-width: 700px;
+    }
+    .scripture-banner__quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .scripture-banner__quote em {
+      color: var(--accent);
+      font-style: normal;
+    }
+    .scripture-banner__ref {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .scripture-banner__sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-top: 1.5rem;
+      max-width: 50ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ---- PILLARS (STICKY CARDS) ---- */
+    .pillars {
+      padding: 120px 0 60px;
+      border-top: 1px solid var(--border);
+    }
+    .pillars__header {
+      text-align: center;
+      padding: 0 24px;
+      margin-bottom: 3rem;
+    }
+    .pillars__cards {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    .pillar-card {
+      position: sticky;
+      top: 100px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 32px;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      transition: transform 0.1s ease;
+      will-change: transform;
+    }
+
+    .pillar-card:nth-child(1) { top: 80px; z-index: 1; }
+    .pillar-card:nth-child(2) { top: 100px; z-index: 2; }
+    .pillar-card:nth-child(3) { top: 120px; z-index: 3; }
+    .pillar-card:nth-child(4) { top: 140px; z-index: 4; }
+    .pillar-card:nth-child(5) { top: 160px; z-index: 5; }
+    .pillar-card:nth-child(6) { top: 180px; z-index: 6; }
+
+    .pillar-card__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .pillar-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.1) 100%);
+    }
+    .pillar-card__content {
+      position: relative;
+      z-index: 2;
+      padding: 40px;
+    }
+    .pillar-card__num {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .pillar-card__content h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .pillar-card__content p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 50ch;
+    }
+
+    /* ---- STATS (ODOMETER) ---- */
+    .stats {
+      padding: 100px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .stats__header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .stats__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+    .odometer {
+      font-family: var(--font-mono);
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      overflow: hidden;
+      height: 1.15em;
+      display: flex;
+      justify-content: center;
+    }
+    .odo-digit {
+      display: inline-block;
+      overflow: hidden;
+      height: 1.15em;
+      position: relative;
+    }
+    .odo-strip {
+      display: flex;
+      flex-direction: column;
+      transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .odo-strip span {
+      display: block;
+      height: 1.15em;
+      line-height: 1.15;
+    }
+    .stat-suffix {
+      font-family: var(--font-mono);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: var(--accent);
+      vertical-align: top;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---- EVENTS ---- */
+    .events {
+      padding: 120px 24px;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+    }
+    .events__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .events__featured {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 0;
+      margin-top: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      text-align: left;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+    }
+    .events__featured::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #f8b862, var(--accent));
+      z-index: 2;
+    }
+    .events__featured-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 380px;
+      background: var(--bg-elevated);
+    }
+    .events__featured-body {
+      padding: 2.5rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .events__live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .events__live-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: livePulse 1.5s ease-in-out infinite;
+    }
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .events__name {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .events__meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-family: var(--font-mono);
+    }
+    .events__detail {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+      line-height: 1.7;
+    }
+    .events__list-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin: 4rem 0 1.25rem;
+      text-align: left;
+    }
+    .events__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: left;
+    }
+    .event-row {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.1rem 1.5rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .event-row:hover {
+      border-color: rgba(240,132,42,0.4);
+      transform: translateX(4px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .event-row--tbc {
+      opacity: 0.65;
+    }
+    .event-date__day {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      text-align: center;
+    }
+    .event-date__month {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 3px;
+      text-align: center;
+    }
+    .event-info__name {
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .event-info__location {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .event-time {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+    @media (max-width: 720px) {
+      .events__featured {
+        grid-template-columns: 1fr;
+      }
+      .events__featured-img {
+        min-height: 260px;
+      }
+      .events__featured-body {
+        padding: 2rem 1.5rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .event-row {
+        grid-template-columns: 56px 1fr;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+      }
+      .event-time { display: none; }
+    }
+
+    /* ---- TEAM ---- */
+    .team {
+      padding: 120px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .team__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .team__header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .team__header p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 50ch;
+      margin: 1rem auto 0;
+      line-height: 1.7;
+    }
+    .team__leadership {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .team__leadership .team-card {
+      width: 300px;
+      flex-shrink: 0;
+    }
+    .team__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .team-card__photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      margin: 0 auto 1rem auto;
+      border: 2.5px solid rgba(240,132,42,0.3);
+      display: block;
+      cursor: pointer;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .team-card__photo:hover {
+      border-color: var(--accent);
+      transform: scale(1.06);
+    }
+    .team-card--leader .team-card__photo {
+      width: 116px;
+      height: 116px;
+    }
+    .team-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .team-card:hover {
+      border-color: rgba(240,132,42,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    }
+    .team-card--leader {
+      background: linear-gradient(135deg, rgba(240,132,42,0.06), rgba(240,132,42,0.01));
+      border-color: rgba(240,132,42,0.2);
+    }
+    .team-card__role {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .team-card__name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .team-card--leader .team-card__name {
+      font-size: 1.25rem;
+    }
+    .team-card__quote {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-style: italic;
+      border-left: 2px solid rgba(240,132,42,0.4);
+      padding-left: 12px;
+      text-align: left;
+    }
+
+    /* Team photo modal */
+    .team-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .team-modal.active { display: flex; }
+    .team-modal__img {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid rgba(240,132,42,0.5);
+      box-shadow: 0 0 60px rgba(240,132,42,0.15);
+    }
+    .team-modal__info {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #fff;
+    }
+    .team-modal__name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .team-modal__role {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .team-modal__close {
+      position: fixed;
+      top: 20px;
+      right: 28px;
+      font-size: 2rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .team-modal__close:hover { opacity: 1; }
+    .team-modal__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .team__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .team__grid { grid-template-columns: repeat(2, 1fr); }
+      .team__leadership .team-card { width: 100%; }
+      .team-modal__img { width: 220px; height: 220px; }
+    }
+
+    /* ---- GIVE / PARTNER CTA ---- */
+    /* =============================================
+       GALLERY
+       ============================================= */
+    .gallery {
+      padding: 120px 24px;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .gallery__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery__header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .gallery__header p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-top: 12px;
+    }
+    .gallery__grid {
+      columns: 3;
+      column-gap: 12px;
+    }
+    .gallery__item {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+    .gallery__item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.4s ease, filter 0.4s ease;
+      filter: brightness(0.92);
+    }
+    .gallery__item:hover img {
+      transform: scale(1.03);
+      filter: brightness(1);
+    }
+    .gallery__item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(240,132,42,0.15);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 6px;
+    }
+    .gallery__item:hover::after {
+      opacity: 1;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox__img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+    }
+    .lightbox__close {
+      position: fixed;
+      top: 20px;
+      right: 28px;
+      font-size: 2rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      z-index: 10000;
+    }
+    .lightbox__close:hover { opacity: 1; }
+    .lightbox__prev,
+    .lightbox__next {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      cursor: pointer;
+      padding: 16px 20px;
+      border-radius: 50%;
+      opacity: 0.7;
+      transition: opacity 0.2s, background 0.2s;
+      z-index: 10000;
+      line-height: 1;
+    }
+    .lightbox__prev { left: 20px; }
+    .lightbox__next { right: 20px; }
+    .lightbox__prev:hover,
+    .lightbox__next:hover {
+      opacity: 1;
+      background: rgba(240,132,42,0.4);
+    }
+    .lightbox__counter {
+      position: fixed;
+      bottom: 20px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      font-family: var(--font-mono);
+    }
+
+    .gallery__item--hidden {
+      display: none;
+    }
+    .gallery__expand {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .gallery__expand-btn {
+      background: none;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 14px 36px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+    }
+    .gallery__expand-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    @media (max-width: 900px) {
+      .gallery__grid { columns: 2; }
+    }
+    @media (max-width: 540px) {
+      .gallery__grid { columns: 1; }
+      .lightbox__prev { left: 8px; }
+      .lightbox__next { right: 8px; }
+    }
+
+    .give {
+      padding: 120px 24px;
+      background: linear-gradient(135deg, rgba(240,132,42,0.05), rgba(240,132,42,0.02));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .give__inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .give__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+    .give__text {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 55ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .give__ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ---- CONTACT ---- */
+    .contact {
+      padding: 120px 24px;
+    }
+    .contact__grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .contact__info { }
+    .contact__details {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .contact__item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .contact__label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .contact__value {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .contact__socials {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+    .contact__social-link {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    .contact__social-link:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .contact__social-link svg {
+      width: 18px;
+      height: 18px;
+      fill: #555;
+    }
+    .contact__social-link:hover svg {
+      fill: var(--accent);
+    }
+
+    .contact__form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact__form input,
+    .contact__form textarea {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .contact__form input:focus,
+    .contact__form textarea:focus {
+      border-color: var(--accent);
+    }
+    .contact__form input::placeholder,
+    .contact__form textarea::placeholder {
+      color: #aaa;
+    }
+    .contact__form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    @media (max-width: 768px) {
+      .contact__grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 24px;
+      text-align: center;
+      background: #0a0a0f;
+      color: #f0ede8;
+    }
+    .footer__logo-img {
+      height: 55px;
+      margin: 0 auto 1.25rem;
+    }
+    .footer__verse {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-style: italic;
+      color: rgba(240, 132, 42, 0.8);
+      max-width: 45ch;
+      margin: 0 auto 1rem;
+      line-height: 1.6;
+    }
+    .footer__copy {
+      font-size: 0.7rem;
+      color: #6b6b73;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 600px) {
+      .pillar-card { min-height: 320px; }
+      .pillar-card__content { padding: 24px; }
+      .curtain-left h2, .curtain-right h2 {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+      }
+      .curtain-frame { max-width: 320px; }
+      .curtain-section { height: 110vh; }
+      .stats__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar__left">
+      <a href="tel:+447588663763" class="topbar__item">&#9742; +44 7588 663763</a>
+      <a href="mailto:info@ipray.uk" class="topbar__item">&#9993; info@ipray.uk</a>
+    </div>
+    <a href="#give" class="topbar__donate">Donate</a>
+    <div class="topbar__right">
+      <a href="https://open.spotify.com/show/5eh7ECssfgMznZtKybju6Q?si=3193324e9af64200" target="_blank" rel="noopener" class="topbar__item">Spotify</a>
+      <a href="https://www.youtube.com/@iPray_initiative" target="_blank" rel="noopener" class="topbar__item">Youtube</a>
+      <a href="https://www.instagram.com/ipray.uk" target="_blank" rel="noopener" class="topbar__item">Instagram</a>
+      <a href="https://www.tiktok.com/@ipray_initiative" target="_blank" rel="noopener" class="topbar__item">TikTok</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <a href="#" class="nav__logo">
+      <img src="ipray-logo.png" alt="iPray" class="nav__logo-img">
+      <span class="nav__logo-text">iPray</span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about">The Initiative</a>
+      <a href="#pillars">Our Pillars</a>
+      <a href="#events">Calendar</a>
+      <a href="#team">The Team</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#give">Give</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#give" class="nav__cta" id="navCta">Partner With Us</a>
+    <button class="nav__hamburger" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- CURTAIN REVEAL (FIRST THING) -->
+  <section class="curtain-section">
+    <div class="curtain-sticky">
+      <!-- Centered portrait video frame -->
+      <div class="curtain-frame">
+        <div class="curtain-content">
+          <video id="curtainVideo" class="curtain-content__video" src="assets/ipray/ipray-street-hq.mp4" autoplay muted loop playsinline></video>
+          <div class="curtain-reveal-text" id="curtainText">
+            <p>"Go into all the world and proclaim the gospel to the whole creation."</p>
+            <span>— Mark 16:15</span>
+          </div>
+        </div>
+
+        <!-- Big center play button (shows when paused) -->
+        <button class="video-center-play" id="curtainCenterPlay" aria-label="Play">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+
+        <!-- Custom video controls -->
+        <div class="video-controls" id="curtainControls">
+          <div class="video-progress" id="curtainProgress">
+            <div class="video-progress__fill" id="curtainProgressFill"></div>
+          </div>
+          <div class="video-controls__row">
+            <button class="video-btn" id="curtainPlayBtn" aria-label="Play/Pause">▶</button>
+            <button class="video-btn" id="curtainMuteBtn" aria-label="Mute/Unmute">🔇</button>
+            <span class="video-time" id="curtainTime">0:00 / 0:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full-screen curtain panels — slide apart to reveal video -->
+      <div class="curtain-left" id="cLeft"><h2>i</h2></div>
+      <div class="curtain-right" id="cRight"><h2>Pray</h2></div>
+    </div>
+  </section>
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="hero__content">
+      <div class="hero__badge">Evangelistic Initiative &bull; Street Ministry &bull; United Kingdom</div>
+      <h1 class="hero__title">
+        <span class="hero__title-line">Taking the</span>
+        <span class="hero__title-line hero__title-accent">Gospel</span>
+        <span class="hero__title-line">to the Streets</span>
+      </h1>
+      <p class="hero__sub">Revival begins when believers take the Gospel beyond the walls of the church. We stir, train, and mobilise the Body of Christ to be a visible, vocal, and loving witness.</p>
+      <div class="hero__ctas">
+      </div>
+      <div class="hero__dove-frame">
+        <video id="heroDoveVideo" src="ipray-hero.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE JESUS IS NEEDED MOST -->
+  <section class="where">
+    <div class="where__inner">
+      <h2 class="where__title fade-up">Where Jesus Is<br>Needed Most</h2>
+      <p class="where__text fade-up">We go to the streets, the high streets, the communities — carrying hope, love, and the Gospel to every corner of the UK.</p>
+      <div class="fade-up" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="#pillars" class="btn btn--primary">Our Mission</a>
+        <a href="#pillars" class="btn btn--outline">Discover Our Pillars</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS (STICKY CARDS) -->
+  <section class="pillars" id="pillars">
+    <div class="pillars__header">
+      <div class="section-tag fade-up">What We Stand For</div>
+      <h2 class="section-title fade-up">Our Six Pillars</h2>
+    </div>
+    <div class="pillars__cards">
+
+      <div class="pillar-card">
+        <img src="assets/ipray/gallery/IMG_7522.jpg" alt="Street preaching" class="pillar-card__img">
+        <div class="pillar-card__overlay"></div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__num">Pillar 01</div>
+          <h3>Street Preaching</h3>
+          <p>Boldly proclaiming the Gospel in public spaces — town centres, high streets, and community gathering points. We go where the people are.</p>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <img src="assets/ipray/gallery/IMG_7446.jpg" alt="Worship and gospel" class="pillar-card__img">
+        <div class="pillar-card__overlay"></div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__num">Pillar 02</div>
+          <h3>Worship in Public Spaces</h3>
+          <p>Taking praise beyond the four walls. Live worship in parks, streets, and public venues — creating an atmosphere for God to move.</p>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <img src="assets/ipray/gallery/ILOO2698.jpeg" alt="Prayer and intercession" class="pillar-card__img">
+        <div class="pillar-card__overlay"></div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__num">Pillar 03</div>
+          <h3>Prayer &amp; Intercession</h3>
+          <p>Standing in the gap for our communities. Praying with and for people on the streets — believing God for breakthrough, healing, and transformation.</p>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <img src="assets/ipray/gallery/IMG_6105.jpeg" alt="Healing ministry" class="pillar-card__img">
+        <div class="pillar-card__overlay"></div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__num">Pillar 04</div>
+          <h3>Healing Ministry</h3>
+          <p>Witnessing God's power through healing. We pray for the sick and hurting — and God shows up. Physical, emotional, and spiritual restoration.</p>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <img src="assets/ipray/gallery/IMG_0672.jpeg" alt="One-on-one evangelism" class="pillar-card__img">
+        <div class="pillar-card__overlay"></div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__num">Pillar 05</div>
+          <h3>One-on-One Evangelism</h3>
+          <p>Personal conversations that change lives. Every encounter matters. We share the love of Jesus face-to-face, one person at a time.</p>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <img src="assets/ipray/gallery/equipping-the-church.jpg" alt="Equipping the church" class="pillar-card__img">
+        <div class="pillar-card__overlay"></div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__num">Pillar 06</div>
+          <h3>Equipping the Church</h3>
+          <p>Training and mobilising believers to step out in faith. We equip the Body of Christ with the confidence and tools to join the mission on the streets.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATS (ODOMETER) -->
+  <section class="stats" id="stats">
+    <div class="stats__header">
+      <div class="section-tag fade-up">By The Numbers</div>
+      <h2 class="section-title fade-up">The Initiative</h2>
+    </div>
+    <div class="stats__grid">
+      <div class="stat-item">
+        <div class="odometer" data-value="25"></div>
+        <div class="stat-label">Outreach events</div>
+      </div>
+      <div class="stat-item">
+        <div class="odometer" data-value="1000" data-suffix="+"></div>
+        <div class="stat-label">People reached</div>
+      </div>
+      <div class="stat-item">
+        <div class="odometer" data-value="20" data-suffix="+"></div>
+        <div class="stat-label">Cities across the UK</div>
+      </div>
+      <div class="stat-item">
+        <div class="odometer" data-value="100" data-suffix="%"></div>
+        <div class="stat-label">Faith. No limits.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCRIPTURE BANNER -->
+  <section class="scripture-banner">
+    <img src="assets/ipray/gallery/IMG_7457.jpg" alt="Street ministry" class="scripture-banner__img">
+    <div class="scripture-banner__overlay"></div>
+    <div class="scripture-banner__content fade-up">
+      <p class="scripture-banner__quote">"For I am not ashamed of the <em>Gospel</em>, because it is the power of God that brings salvation to everyone who believes."</p>
+      <span class="scripture-banner__ref">— Romans 1:16</span>
+      <p class="scripture-banner__sub">The Gospel is not meant to stay behind walls. It belongs in the streets, the squares, and the communities where hope is needed most.</p>
+    </div>
+  </section>
+
+  <!-- EVENTS / CALENDAR -->
+  <section class="events" id="events">
+    <div class="events__inner">
+      <div class="section-tag fade-up">Upcoming</div>
+      <h2 class="section-title fade-up">Next Outreach</h2>
+
+      <div class="events__featured fade-up">
+        <img src="assets/ipray/ipray-bristol-flyer.jpg" alt="Bristol Outreach Poster" class="events__featured-img">
+        <div class="events__featured-body">
+          <div class="events__live">
+            <span class="events__live-dot"></span>
+            Up Next
+          </div>
+          <h3 class="events__name">Bristol Street Worship &amp; Evangelism</h3>
+          <p class="events__meta">25 April 2026 &nbsp;·&nbsp; 1:00 PM – 3:00 PM</p>
+          <p class="events__detail">Join us on the streets of Bristol as we take the Gospel to the people. All believers welcome — come equipped, come expectant.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSckNRO2JO1p5VnNJFPzXjSmx6QepGGMedtT_a3SDAD0PReNXw/viewform" target="_blank" rel="noopener" class="btn btn--primary">Register Interest</a>
+        </div>
+      </div>
+
+      <h3 class="events__list-title fade-up">Full Calendar — 2026</h3>
+      <div class="events__list">
+
+        <div class="event-row fade-up">
+          <div>
+            <div class="event-date__day">25</div>
+            <div class="event-date__month">Apr</div>
+          </div>
+          <div>
+            <div class="event-info__name">Street Worship &amp; Evangelism</div>
+            <div class="event-info__location">Bristol</div>
+          </div>
+          <div class="event-time">1:00 PM</div>
+        </div>
+
+        <div class="event-row fade-up">
+          <div>
+            <div class="event-date__day">23</div>
+            <div class="event-date__month">May</div>
+          </div>
+          <div>
+            <div class="event-info__name">Street Worship &amp; Evangelism</div>
+            <div class="event-info__location">Cambridge</div>
+          </div>
+          <div class="event-time">2:00 PM</div>
+        </div>
+
+        <div class="event-row fade-up">
+          <div>
+            <div class="event-date__day">25</div>
+            <div class="event-date__month">Jul</div>
+          </div>
+          <div>
+            <div class="event-info__name">Worship Night</div>
+            <div class="event-info__location">Venue TBC</div>
+          </div>
+          <div class="event-time">7:00 PM</div>
+        </div>
+
+        <div class="event-row fade-up">
+          <div>
+            <div class="event-date__day">01</div>
+            <div class="event-date__month">Aug</div>
+          </div>
+          <div>
+            <div class="event-info__name">Street Worship &amp; Evangelism</div>
+            <div class="event-info__location">Brighton</div>
+          </div>
+          <div class="event-time">1:00 PM</div>
+        </div>
+
+        <div class="event-row fade-up">
+          <div>
+            <div class="event-date__day">26</div>
+            <div class="event-date__month">Sep</div>
+          </div>
+          <div>
+            <div class="event-info__name">Street Worship &amp; Evangelism</div>
+            <div class="event-info__location">Portsmouth</div>
+          </div>
+          <div class="event-time">1:00 PM</div>
+        </div>
+
+        <div class="event-row fade-up">
+          <div>
+            <div class="event-date__day">31</div>
+            <div class="event-date__month">Oct</div>
+          </div>
+          <div>
+            <div class="event-info__name">Street Worship &amp; Evangelism</div>
+            <div class="event-info__location">Newcastle</div>
+          </div>
+          <div class="event-time">12:00 PM</div>
+        </div>
+
+        <div class="event-row fade-up">
+          <div>
+            <div class="event-date__day">19</div>
+            <div class="event-date__month">Dec</div>
+          </div>
+          <div>
+            <div class="event-info__name">Street Worship &amp; Evangelism</div>
+            <div class="event-info__location">Oxford</div>
+          </div>
+          <div class="event-time">1:00 PM</div>
+        </div>
+
+        <div class="event-row event-row--tbc fade-up">
+          <div>
+            <div class="event-date__day">—</div>
+            <div class="event-date__month">TBC</div>
+          </div>
+          <div>
+            <div class="event-info__name">Evangelism Training</div>
+            <div class="event-info__location">Online</div>
+          </div>
+          <div class="event-time">8:00 – 9:00 PM</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- THE TEAM -->
+  <section class="team" id="team">
+    <div class="team__inner">
+      <div class="team__header">
+        <div class="section-tag fade-up">Who We Are</div>
+        <h2 class="section-title fade-up">The Team</h2>
+        <p class="fade-up">A family of believers stirred by the Gospel and called to the streets. Meet the people behind iPray.</p>
+      </div>
+
+      <!-- Leadership -->
+      <div class="team__leadership">
+        <div class="team-card team-card--leader fade-up">
+          <img src="assets/ipray/team/Joel_&_Vanessa.jpg" alt="Joel & Vanessa" class="team-card__photo" onclick="openTeamModal(this,'Joel &amp; Vanessa','Co-Founders &amp; Co-Leaders')">
+          <div class="team-card__role">Co-Founders &amp; Co-Leaders</div>
+          <div class="team-card__name">Joel &amp; Vanessa</div>
+          <p class="team-card__quote">"The moment I said yes to Jesus, my life changed; now I walk in Love, Faith and Hope."</p>
+        </div>
+        <div class="team-card team-card--leader fade-up">
+          <img src="assets/ipray/team/Joanita.jpeg" alt="Joanita" class="team-card__photo" onclick="openTeamModal(this,'Joanita','Co-Leader')">
+          <div class="team-card__role">Co-Leader</div>
+          <div class="team-card__name">Joanita</div>
+          <p class="team-card__quote">Walking in faith and leading others into the heart of God.</p>
+        </div>
+      </div>
+
+      <!-- Core team -->
+      <div class="team__grid">
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/David.jpeg" alt="David" class="team-card__photo" onclick="openTeamModal(this,'David','Deputy Lead &amp; Worship')">
+          <div class="team-card__role">Deputy Lead &amp; Worship</div>
+          <div class="team-card__name">David</div>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Jesse.jpeg" alt="Jesse" class="team-card__photo" onclick="openTeamModal(this,'Jesse','Media Officer')">
+          <div class="team-card__role">Media Officer</div>
+          <div class="team-card__name">Jesse</div>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Rev_Sam_&_Lady_Annie.jpeg" alt="Rev Sam & Lady Annie" class="team-card__photo" onclick="openTeamModal(this,'Rev Sam &amp; Lady Annie','Pastoral Care')">
+          <div class="team-card__role">Pastoral Care</div>
+          <div class="team-card__name">Rev Sam &amp; Lady Annie</div>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Priscilla.jpeg" alt="Priscilla" class="team-card__photo" onclick="openTeamModal(this,'Priscilla','Worship Leader')">
+          <div class="team-card__role">Worship Leader</div>
+          <div class="team-card__name">Priscilla</div>
+          <p class="team-card__quote">"Jesus saved my life; there is hope, even in the darkest moments."</p>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Eloisa.jpg" alt="Eloisa" class="team-card__photo" onclick="openTeamModal(this,'Eloisa','Worship Leader')">
+          <div class="team-card__role">Worship Leader</div>
+          <div class="team-card__name">Eloisa</div>
+          <p class="team-card__quote">"Come as you are."</p>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Mish.jpeg" alt="Mish" class="team-card__photo" onclick="openTeamModal(this,'Mish','Charity Liaison')">
+          <div class="team-card__role">Charity Liaison</div>
+          <div class="team-card__name">Mish</div>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Christabel.jpeg" alt="Christabel" class="team-card__photo" onclick="openTeamModal(this,'Christabel','Media Assistant')">
+          <div class="team-card__role">Media Assistant</div>
+          <div class="team-card__name">Christabel</div>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Billy.jpeg" alt="Billy" class="team-card__photo" onclick="openTeamModal(this,'Billy','Evangelist')">
+          <div class="team-card__role">Evangelist</div>
+          <div class="team-card__name">Billy</div>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Isabella.jpg" alt="Isabella" class="team-card__photo" onclick="openTeamModal(this,'Isabella','Follow-up Liaison')">
+          <div class="team-card__role">Follow-up Liaison</div>
+          <div class="team-card__name">Isabella</div>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Jude.jpeg" alt="Jude" class="team-card__photo" onclick="openTeamModal(this,'Jude','Connect Leader')">
+          <div class="team-card__role">Connect Leader</div>
+          <div class="team-card__name">Jude</div>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Emmanuel.jpeg" alt="Emmanuel" class="team-card__photo" onclick="openTeamModal(this,'Emmanuel','Elder')">
+          <div class="team-card__role">Elder</div>
+          <div class="team-card__name">Emmanuel</div>
+        </div>
+        <div class="team-card fade-up">
+          <img src="assets/ipray/team/Gideon.jpg" alt="Gideon" class="team-card__photo" onclick="openTeamModal(this,'Gideon','Trustee')">
+          <div class="team-card__role">Trustee</div>
+          <div class="team-card__name">Gideon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="gallery__inner">
+      <div class="gallery__header">
+        <div class="section-tag fade-up">On The Streets</div>
+        <h2 class="section-title fade-up">Gallery</h2>
+        <p class="fade-up">Moments from our outreaches across the UK.</p>
+      </div>
+      <div class="gallery__grid">
+        <div class="gallery__item fade-up" onclick="openLightbox(0)"><img src="assets/ipray/gallery/DSC04628.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(1)"><img src="assets/ipray/gallery/DSC04649.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(2)"><img src="assets/ipray/gallery/DSC04671.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(3)"><img src="assets/ipray/gallery/DSC04679.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(4)"><img src="assets/ipray/gallery/ILOO2545.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(5)"><img src="assets/ipray/gallery/ILOO2547.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(6)"><img src="assets/ipray/gallery/ILOO2648.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(7)"><img src="assets/ipray/gallery/ILOO2654.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(8)"><img src="assets/ipray/gallery/ILOO2672.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(9)"><img src="assets/ipray/gallery/ILOO2698.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(10)"><img src="assets/ipray/gallery/ILOO2701.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item fade-up" onclick="openLightbox(11)"><img src="assets/ipray/gallery/IMG_0279.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(12)"><img src="assets/ipray/gallery/IMG_0284.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(13)"><img src="assets/ipray/gallery/IMG_0287.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(14)"><img src="assets/ipray/gallery/IMG_0288.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(15)"><img src="assets/ipray/gallery/IMG_0296.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(16)"><img src="assets/ipray/gallery/IMG_0297.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(17)"><img src="assets/ipray/gallery/IMG_0309.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(18)"><img src="assets/ipray/gallery/IMG_0314.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(19)"><img src="assets/ipray/gallery/IMG_0316.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(20)"><img src="assets/ipray/gallery/IMG_0319.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(21)"><img src="assets/ipray/gallery/IMG_0321.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(22)"><img src="assets/ipray/gallery/IMG_0672.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(23)"><img src="assets/ipray/gallery/IMG_0712.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(24)"><img src="assets/ipray/gallery/IMG_0722.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(25)"><img src="assets/ipray/gallery/IMG_0790.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(26)"><img src="assets/ipray/gallery/IMG_1807.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(27)"><img src="assets/ipray/gallery/IMG_1820.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(28)"><img src="assets/ipray/gallery/IMG_1827.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(29)"><img src="assets/ipray/gallery/IMG_1833.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(30)"><img src="assets/ipray/gallery/IMG_1851.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(31)"><img src="assets/ipray/gallery/IMG_1854.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(32)"><img src="assets/ipray/gallery/IMG_2259.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(33)"><img src="assets/ipray/gallery/IMG_4158.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(34)"><img src="assets/ipray/gallery/IMG_4159.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(35)"><img src="assets/ipray/gallery/IMG_6073.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(36)"><img src="assets/ipray/gallery/IMG_6075.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(37)"><img src="assets/ipray/gallery/IMG_6080.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(38)"><img src="assets/ipray/gallery/IMG_6084.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(39)"><img src="assets/ipray/gallery/IMG_6092.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(40)"><img src="assets/ipray/gallery/IMG_6094.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(41)"><img src="assets/ipray/gallery/IMG_6097.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(42)"><img src="assets/ipray/gallery/IMG_6105.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(43)"><img src="assets/ipray/gallery/IMG_6113.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(44)"><img src="assets/ipray/gallery/IMG_6114.jpeg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(45)"><img src="assets/ipray/gallery/IMG_7446.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(46)"><img src="assets/ipray/gallery/IMG_7454.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(47)"><img src="assets/ipray/gallery/IMG_7457.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(48)"><img src="assets/ipray/gallery/IMG_7520.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(49)"><img src="assets/ipray/gallery/IMG_7522.jpg" alt="iPray outreach" loading="lazy"></div>
+        <div class="gallery__item gallery__item--hidden fade-up" onclick="openLightbox(50)"><img src="assets/ipray/gallery/IMG_7534-2.jpg" alt="iPray outreach" loading="lazy"></div>
+      </div>
+      <div class="gallery__expand">
+        <button class="gallery__expand-btn" id="galleryExpandBtn" onclick="toggleGallery()">View All 51 Photos</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM PHOTO MODAL -->
+  <div class="team-modal" id="teamModal" onclick="closeTeamModal(event)">
+    <button class="team-modal__close" onclick="closeTeamModal()">✕</button>
+    <div class="team-modal__inner">
+      <img class="team-modal__img" id="teamModalImg" src="" alt="">
+      <div class="team-modal__info">
+        <div class="team-modal__name" id="teamModalName"></div>
+        <div class="team-modal__role" id="teamModalRole"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+    <button class="lightbox__close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox__prev" onclick="event.stopPropagation(); shiftLightbox(-1)">&#8592;</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="Gallery image">
+    <button class="lightbox__next" onclick="event.stopPropagation(); shiftLightbox(1)">&#8594;</button>
+    <span class="lightbox__counter" id="lightboxCounter"></span>
+  </div>
+
+  <!-- GIVE / PARTNER -->
+  <section class="give" id="give">
+    <div class="give__inner">
+      <div class="section-tag fade-up">Support the Mission</div>
+      <h2 class="give__title fade-up">Partner With Us</h2>
+      <p class="give__text fade-up">Your generosity fuels every outreach, every conversation, every prayer on the streets. Partner with iPray and be part of the revival across the UK.</p>
+      <div class="give__ctas fade-up">
+        <a href="https://www.paypal.com/donate?business=info%40ipray.uk&currency_code=GBP" target="_blank" rel="noopener" class="btn btn--primary">Give Now</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVUd07D7cVkLQ3yO75wWhKtp9jAqQPlNGL0bfG27rPmz-kRg/viewform" target="_blank" rel="noopener" class="btn btn--outline">Become a Partner</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact__grid">
+      <div class="contact__info">
+        <div class="section-tag fade-up">Get In Touch</div>
+        <h2 class="section-title fade-up">Got a Question?<br>A Prayer?</h2>
+        <div class="contact__details fade-up">
+          <div class="contact__item">
+            <span class="contact__label">Email</span>
+            <a href="mailto:info@ipray.uk" class="contact__value">info@ipray.uk</a>
+          </div>
+          <div class="contact__item">
+            <span class="contact__label">Based In</span>
+            <span class="contact__value">United Kingdom</span>
+          </div>
+        </div>
+        <div class="contact__socials fade-up">
+          <a href="https://www.youtube.com/@iPray_initiative" target="_blank" rel="noopener" class="contact__social-link" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.53 3.5 12 3.5 12 3.5s-7.53 0-9.38.55A3.02 3.02 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3.02 3.02 0 002.12 2.14c1.85.55 9.38.55 9.38.55s7.53 0 9.38-.55a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/ipray.uk" target="_blank" rel="noopener" class="contact__social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.44.41.61.24 1.05.52 1.51.98.46.46.74.9.98 1.51.17.47.36 1.27.41 2.44.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.44a4.07 4.07 0 01-.98 1.51c-.46.46-.9.74-1.51.98-.47.17-1.27.36-2.44.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.44-.41a4.07 4.07 0 01-1.51-.98 4.07 4.07 0 01-.98-1.51c-.17-.47-.36-1.27-.41-2.44C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.44.24-.61.52-1.05.98-1.51.46-.46.9-.74 1.51-.98.47-.17 1.27-.36 2.44-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.88 5.88 0 00-2.13 1.38A5.88 5.88 0 00.63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.47 1.38 2.13a5.88 5.88 0 002.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.88 5.88 0 002.13-1.38 5.88 5.88 0 001.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.88 5.88 0 00-1.38-2.13A5.88 5.88 0 0019.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm7.85-10.41a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@ipray_initiative" target="_blank" rel="noopener" class="contact__social-link" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.4a8.16 8.16 0 004.76 1.52V7.56a4.85 4.85 0 01-1-.87z"/></svg>
+          </a>
+        </div>
+      </div>
+      <form class="contact__form fade-up" onsubmit="return false;">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <textarea placeholder="Your message, prayer request, or enquiry..." rows="5"></textarea>
+        <button type="submit" class="btn btn--primary" style="width:100%;">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <img src="ipray-logo.png" alt="iPray" class="footer__logo-img">
+    <p class="footer__verse">"Go into all the world and proclaim the gospel to the whole creation." — Mark 16:15</p>
+    <p class="footer__copy">&copy; 2026 iPray Initiative. All rights reserved.</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+  // Force scroll to top on refresh / back / bfcache
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+  window.addEventListener('DOMContentLoaded', function(){ window.scrollTo(0, 0); });
+  window.addEventListener('load', function(){ window.scrollTo(0, 0); });
+  window.addEventListener('pageshow', function(){ window.scrollTo(0, 0); });
+
+  (function() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* ---- MOBILE NAV ---- */
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    var cta = document.getElementById('navCta');
+    toggle.addEventListener('click', function() {
+      links.classList.toggle('open');
+      cta.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        links.classList.remove('open');
+        cta.classList.remove('open');
+      });
+    });
+
+    /* ---- HERO ANIMATIONS ---- */
+    gsap.to('.hero__title-line', {
+      opacity: 1, y: 0,
+      duration: 1.4, ease: 'power4.out',
+      stagger: 0.2, delay: 0.3
+    });
+    gsap.fromTo('.hero__badge',
+      { opacity: 0, y: -20 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.1 }
+    );
+    gsap.fromTo('.hero__sub',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.1 }
+    );
+    gsap.fromTo('.hero__ctas',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.3 }
+    );
+    gsap.fromTo('.hero__scroll',
+      { opacity: 0 },
+      { opacity: 1, duration: 1, delay: 1.8 }
+    );
+
+    /* ---- CURTAIN REVEAL ---- */
+    var cs = document.querySelector('.curtain-section');
+    var cFrame = document.querySelector('.curtain-frame');
+
+    // Calculate slide distance: each curtain slides outward by half the frame width
+    // so its inner edge lands exactly at the frame edge.
+    function getCurtainSlide() {
+      return cFrame ? (cFrame.offsetWidth / 2) + 1 : 0; // +1 to fully clear edge
+    }
+
+    ScrollTrigger.matchMedia({
+      // ---- DESKTOP: scrub-based curtain reveal ----
+      '(min-width: 769px)': function() {
+        gsap.to('#cLeft', {
+          x: function() { return -getCurtainSlide(); },
+          ease: 'power2.inOut',
+          scrollTrigger: { trigger: cs, start: 'top top', end: '60% top', scrub: 0.5, invalidateOnRefresh: true }
+        });
+        gsap.to('#cRight', {
+          x: function() { return getCurtainSlide(); },
+          ease: 'power2.inOut',
+          scrollTrigger: { trigger: cs, start: 'top top', end: '60% top', scrub: 0.5, invalidateOnRefresh: true }
+        });
+        gsap.to('#curtainText', {
+          opacity: 1, y: 0,
+          scrollTrigger: { trigger: cs, start: '50% top', end: '70% top', scrub: true }
+        });
+        ScrollTrigger.create({
+          trigger: cs,
+          start: '60% top',
+          once: true,
+          onEnter: function() {
+            document.querySelector('.nav').classList.add('nav--visible');
+          }
+        });
+      },
+
+      // ---- MOBILE: one-shot timed reveal, stays open ----
+      '(max-width: 768px)': function() {
+        var tl = gsap.timeline({
+          paused: true,
+          onStart: function() {
+            var v = document.getElementById('curtainVideo');
+            if (v) {
+              try { v.currentTime = 0; } catch(e) {}
+              var p = v.play();
+              if (p && p.catch) p.catch(function(){});
+            }
+          }
+        });
+        tl.to('#cLeft',  { x: function() { return -getCurtainSlide(); }, duration: 1.1, ease: 'power3.inOut' }, 0)
+          .to('#cRight', { x: function() { return  getCurtainSlide(); }, duration: 1.1, ease: 'power3.inOut' }, 0)
+          .to('#curtainText', { opacity: 1, y: 0, duration: 0.5 }, 0.7);
+
+        // Fire as soon as the user scrolls a tiny bit past the baseline
+        var fired = false;
+        var baseline = null;
+        function maybeFire() {
+          if (fired) return;
+          if (baseline === null) { baseline = window.scrollY; return; }
+          if (window.scrollY > baseline + 15) {
+            fired = true;
+            tl.play();
+            document.querySelector('.nav').classList.add('nav--visible');
+            window.removeEventListener('scroll', maybeFire);
+            window.removeEventListener('touchmove', maybeFire);
+            window.removeEventListener('wheel', maybeFire);
+          }
+        }
+        // Capture baseline after layout settles
+        window.addEventListener('load', function(){ baseline = window.scrollY; });
+        setTimeout(function(){ if (baseline === null) baseline = window.scrollY; }, 300);
+        window.addEventListener('scroll', maybeFire, { passive: true });
+        window.addEventListener('touchmove', maybeFire, { passive: true });
+        window.addEventListener('wheel', maybeFire, { passive: true });
+      }
+    });
+
+    /* ---- STICKY CARDS (PILLARS) ---- */
+    var cards = document.querySelectorAll('.pillar-card');
+    cards.forEach(function(card, i) {
+      if (i < cards.length - 1) {
+        gsap.to(card, {
+          scale: 0.95,
+          opacity: 0.6,
+          scrollTrigger: {
+            trigger: cards[i + 1],
+            start: 'top 80%',
+            end: 'top 20%',
+            scrub: true
+          }
+        });
+      }
+    });
+
+    /* ---- ODOMETER STATS ---- */
+    document.querySelectorAll('.odometer').forEach(function(odo) {
+      var val = odo.dataset.value;
+      var suffix = odo.dataset.suffix || '';
+      var digits = val.split('');
+      odo.innerHTML = '';
+
+      digits.forEach(function(d) {
+        var digit = document.createElement('div');
+        digit.className = 'odo-digit';
+        var strip = document.createElement('div');
+        strip.className = 'odo-strip';
+        for (var i = 0; i <= 9; i++) {
+          var s = document.createElement('span');
+          s.textContent = i;
+          strip.appendChild(s);
+        }
+        digit.appendChild(strip);
+        odo.appendChild(digit);
+      });
+
+      if (suffix) {
+        var s = document.createElement('span');
+        s.className = 'stat-suffix';
+        s.textContent = suffix;
+        odo.appendChild(s);
+      }
+
+      ScrollTrigger.create({
+        trigger: odo,
+        start: 'top 85%',
+        once: true,
+        onEnter: function() {
+          var strips = odo.querySelectorAll('.odo-strip');
+          strips.forEach(function(strip, i) {
+            var target = parseInt(digits[i]);
+            var h = strip.children[0].offsetHeight;
+            strip.style.transform = 'translateY(-' + (target * h) + 'px)';
+            strip.style.transitionDelay = (i * 0.12) + 's';
+          });
+        }
+      });
+    });
+
+    /* ---- FADE UP ANIMATIONS ---- */
+    gsap.utils.toArray('.fade-up').forEach(function(el) {
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 85%' }
+      });
+    });
+
+    /* ---- SECTION TAGS & TITLES ---- */
+    document.querySelectorAll('.section-tag:not(.fade-up)').forEach(function(tag) {
+      gsap.fromTo(tag,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: tag, start: 'top 85%' }
+        }
+      );
+    });
+
+    document.querySelectorAll('.section-title:not(.fade-up)').forEach(function(title) {
+      gsap.fromTo(title,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: title, start: 'top 85%' }
+        }
+      );
+    });
+
+    /* ---- EVENTS CARD ---- */
+    gsap.fromTo('.events__card',
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: '.events__card', start: 'top 80%' }
+      }
+    );
+
+    /* ---- STAT ITEMS ---- */
+    gsap.fromTo('.stat-item',
+      { opacity: 0, scale: 0.9 },
+      { opacity: 1, scale: 1, duration: 0.6, stagger: 0.1, ease: 'back.out(1.7)',
+        scrollTrigger: { trigger: '.stats__grid', start: 'top 80%' }
+      }
+    );
+
+  })();
+  </script>
+
+  <!-- Hero dove video — slow to 0.75x -->
+  <script>
+    (function() {
+      var v = document.getElementById('heroDoveVideo');
+      if (!v) return;
+      var apply = function() { v.playbackRate = 0.75; };
+      apply();
+      v.addEventListener('loadedmetadata', apply);
+      v.addEventListener('play', apply);
+      v.addEventListener('ratechange', function() {
+        if (v.playbackRate !== 0.75) v.playbackRate = 0.75;
+      });
+    })();
+  </script>
+
+  <!-- Curtain video custom controls -->
+  <script>
+    (function() {
+      var video = document.getElementById('curtainVideo');
+      var controls = document.getElementById('curtainControls');
+      var playBtn = document.getElementById('curtainPlayBtn');
+      var muteBtn = document.getElementById('curtainMuteBtn');
+      var progress = document.getElementById('curtainProgress');
+      var fill = document.getElementById('curtainProgressFill');
+      var time = document.getElementById('curtainTime');
+      var centerPlay = document.getElementById('curtainCenterPlay');
+      if (!video || !controls) return;
+
+      function fmt(s) {
+        if (isNaN(s)) return '0:00';
+        var m = Math.floor(s / 60);
+        var sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+      }
+
+      function syncPlayState() {
+        if (video.paused) {
+          playBtn.textContent = '▶';
+          controls.classList.add('is-paused');
+          centerPlay.classList.add('is-visible');
+        } else {
+          playBtn.textContent = '⏸';
+          controls.classList.remove('is-paused');
+          centerPlay.classList.remove('is-visible');
+        }
+      }
+
+      function syncMute() {
+        muteBtn.textContent = video.muted ? '🔇' : '🔊';
+      }
+
+      function togglePlay() {
+        if (video.paused) video.play();
+        else video.pause();
+      }
+
+      playBtn.addEventListener('click', togglePlay);
+      centerPlay.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
+      video.addEventListener('play', syncPlayState);
+      video.addEventListener('pause', syncPlayState);
+
+      muteBtn.addEventListener('click', function() {
+        video.muted = !video.muted;
+        syncMute();
+      });
+
+      video.addEventListener('timeupdate', function() {
+        if (!video.duration) return;
+        var pct = (video.currentTime / video.duration) * 100;
+        fill.style.width = pct + '%';
+        time.textContent = fmt(video.currentTime) + ' / ' + fmt(video.duration);
+      });
+
+      progress.addEventListener('click', function(e) {
+        if (!video.duration) return;
+        var rect = progress.getBoundingClientRect();
+        var pct = (e.clientX - rect.left) / rect.width;
+        video.currentTime = pct * video.duration;
+      });
+
+      syncPlayState();
+      syncMute();
+    })();
+  </script>
+
+  <script>
+    /* =============================================
+       GALLERY LIGHTBOX
+       ============================================= */
+    const galleryImages = [
+      'assets/ipray/gallery/DSC04628.jpeg',
+      'assets/ipray/gallery/DSC04649.jpeg',
+      'assets/ipray/gallery/DSC04671.jpeg',
+      'assets/ipray/gallery/DSC04679.jpeg',
+      'assets/ipray/gallery/ILOO2545.jpg',
+      'assets/ipray/gallery/ILOO2547.jpeg',
+      'assets/ipray/gallery/ILOO2648.jpg',
+      'assets/ipray/gallery/ILOO2654.jpg',
+      'assets/ipray/gallery/ILOO2672.jpg',
+      'assets/ipray/gallery/ILOO2698.jpeg',
+      'assets/ipray/gallery/ILOO2701.jpeg',
+      'assets/ipray/gallery/IMG_0279.jpeg',
+      'assets/ipray/gallery/IMG_0284.jpeg',
+      'assets/ipray/gallery/IMG_0287.jpeg',
+      'assets/ipray/gallery/IMG_0288.jpeg',
+      'assets/ipray/gallery/IMG_0296.jpeg',
+      'assets/ipray/gallery/IMG_0297.jpeg',
+      'assets/ipray/gallery/IMG_0309.jpeg',
+      'assets/ipray/gallery/IMG_0314.jpeg',
+      'assets/ipray/gallery/IMG_0316.jpeg',
+      'assets/ipray/gallery/IMG_0319.jpeg',
+      'assets/ipray/gallery/IMG_0321.jpeg',
+      'assets/ipray/gallery/IMG_0672.jpeg',
+      'assets/ipray/gallery/IMG_0712.jpeg',
+      'assets/ipray/gallery/IMG_0722.jpeg',
+      'assets/ipray/gallery/IMG_0790.jpeg',
+      'assets/ipray/gallery/IMG_1807.jpeg',
+      'assets/ipray/gallery/IMG_1820.jpeg',
+      'assets/ipray/gallery/IMG_1827.jpg',
+      'assets/ipray/gallery/IMG_1833.jpg',
+      'assets/ipray/gallery/IMG_1851.jpeg',
+      'assets/ipray/gallery/IMG_1854.jpg',
+      'assets/ipray/gallery/IMG_2259.jpg',
+      'assets/ipray/gallery/IMG_4158.jpeg',
+      'assets/ipray/gallery/IMG_4159.jpeg',
+      'assets/ipray/gallery/IMG_6073.jpeg',
+      'assets/ipray/gallery/IMG_6075.jpeg',
+      'assets/ipray/gallery/IMG_6080.jpeg',
+      'assets/ipray/gallery/IMG_6084.jpeg',
+      'assets/ipray/gallery/IMG_6092.jpeg',
+      'assets/ipray/gallery/IMG_6094.jpeg',
+      'assets/ipray/gallery/IMG_6097.jpeg',
+      'assets/ipray/gallery/IMG_6105.jpeg',
+      'assets/ipray/gallery/IMG_6113.jpeg',
+      'assets/ipray/gallery/IMG_6114.jpeg',
+      'assets/ipray/gallery/IMG_7446.jpg',
+      'assets/ipray/gallery/IMG_7454.jpg',
+      'assets/ipray/gallery/IMG_7457.jpg',
+      'assets/ipray/gallery/IMG_7520.jpg',
+      'assets/ipray/gallery/IMG_7522.jpg',
+      'assets/ipray/gallery/IMG_7534-2.jpg'
+    ];
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      const counter = document.getElementById('lightboxCounter');
+      img.src = galleryImages[currentIndex];
+      counter.textContent = (currentIndex + 1) + ' / ' + galleryImages.length;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeLightboxOutside(e) {
+      if (e.target === document.getElementById('lightbox')) closeLightbox();
+    }
+
+    function shiftLightbox(dir) {
+      currentIndex = (currentIndex + dir + galleryImages.length) % galleryImages.length;
+      const img = document.getElementById('lightboxImg');
+      const counter = document.getElementById('lightboxCounter');
+      img.src = galleryImages[currentIndex];
+      counter.textContent = (currentIndex + 1) + ' / ' + galleryImages.length;
+    }
+
+    document.addEventListener('keydown', function(e) {
+      const lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') shiftLightbox(-1);
+      if (e.key === 'ArrowRight') shiftLightbox(1);
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    /* Team photo modal */
+    function openTeamModal(img, name, role) {
+      document.getElementById('teamModalImg').src = img.src;
+      document.getElementById('teamModalImg').alt = name;
+      document.getElementById('teamModalName').innerHTML = name;
+      document.getElementById('teamModalRole').innerHTML = role;
+      document.getElementById('teamModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeTeamModal(e) {
+      if (e && e.target !== document.getElementById('teamModal') && !e.target.classList.contains('team-modal__close')) return;
+      document.getElementById('teamModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('teamModal').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    /* Gallery expand/collapse */
+    let galleryExpanded = false;
+    function toggleGallery() {
+      galleryExpanded = !galleryExpanded;
+      const hidden = document.querySelectorAll('.gallery__item--hidden');
+      const btn = document.getElementById('galleryExpandBtn');
+      hidden.forEach(function(el) {
+        el.style.display = galleryExpanded ? 'block' : 'none';
+      });
+      btn.textContent = galleryExpanded ? 'Show Less' : 'View All 51 Photos';
+    }
+  </script>
+
+</body>
+</html>
